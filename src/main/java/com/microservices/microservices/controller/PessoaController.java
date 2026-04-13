@@ -34,24 +34,16 @@ public class PessoaController {
 
     @GetMapping("/listarTodos")
     public ResponseEntity<List<Pessoa>> listarTodos() {
-        List<Pessoa> pessoas = repository.findAll();
-        return new ResponseEntity<>(pessoas, HttpStatus.OK);
+        return service.listarTodos();
     }
 
     @DeleteMapping("/excluir/{id}")
     public ResponseEntity<String> excluir(@PathVariable int id) {
-        repository.deleteById(id);
-        return new ResponseEntity<>("A pessoa com o ID " + id + " foi excluido com sucesso!", HttpStatus.OK);
+        return service.excluir(id);
     }
 
     @PutMapping("/editar/{id}")
     public ResponseEntity<String> editar(@PathVariable int id, @RequestBody Pessoa pessoaAtualizada) {
-        if (repository.existsById(id)) {
-            pessoaAtualizada.setId(id);
-            repository.save(pessoaAtualizada);
-            return new ResponseEntity<>("A pessoa com o ID " + id + " foi alterada com sucesso!", HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>("Pessoa não encontrada.", HttpStatus.NOT_FOUND);
-        }
+        return service.editar(id, pessoaAtualizada);
     }
 }
