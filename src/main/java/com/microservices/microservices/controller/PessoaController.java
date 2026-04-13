@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.microservices.microservices.entities.Pessoa;
 import com.microservices.microservices.repository.PessoaRepository;
+import com.microservices.microservices.service.PessoaService;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,12 +24,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 public class PessoaController {
 
     @Autowired
-    PessoaRepository repository;
+    PessoaService service;
 
     @PostMapping("/cadastro")
     public ResponseEntity<String> cadastro(@RequestBody Pessoa pessoa) {
-        repository.save(pessoa);
-        return new ResponseEntity<>("Cadastrado com sucesso", HttpStatus.OK);
+        return service.cadastrar(pessoa);
+
     }
 
     @GetMapping("/listarTodos")
