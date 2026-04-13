@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import com.microservices.microservices.entities.Pessoa;
 import com.microservices.microservices.repository.PessoaRepository;
@@ -33,7 +31,7 @@ public class PessoaService {
         return new ResponseEntity<>("A pessoa com o ID " + id + " foi excluido com sucesso!", HttpStatus.OK);
     }
 
-    public ResponseEntity<String> editar(@PathVariable int id, @RequestBody Pessoa pessoaAtualizada) {
+    public ResponseEntity<String> editar(int id, Pessoa pessoaAtualizada) {
         if (repository.existsById(id)) {
             pessoaAtualizada.setId(id);
             repository.save(pessoaAtualizada);
