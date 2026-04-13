@@ -12,8 +12,11 @@ import com.microservices.microservices.entities.Pessoa;
 import com.microservices.microservices.repository.PessoaRepository;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/pessoa")
@@ -34,4 +37,20 @@ public class PessoaController {
         return new ResponseEntity<>(pessoas, HttpStatus.OK);
     }
 
+    @DeleteMapping("/excluir/{id}")
+    public ResponseEntity<String> excluir(@PathVariable int id) {
+        repository.deleteById(id);
+        return new ResponseEntity<>("A pessoa com o ID " + id + " foi excluido com sucesso!", HttpStatus.OK);
+    }
+
+    @PutMapping("/alterar/{id}")
+    public ResponseEntity<String> alterar(@PathVariable int id, @RequestBody Pessoa pessoaAtualizada) {
+        if (repository.existsById(id)) {
+            pessoaAtualizada.setId(id);
+            repository.save(pessoaAtualizada);
+            return new ResponseEntity<>("A pessoa com o ID " + id + " foi alterada com sucesso!", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Pessoa não encontrada.", HttpStatus.NOT_FOUND);
+        }
+    }
 }
