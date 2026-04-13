@@ -33,7 +33,7 @@ public class PessoaService {
         return new ResponseEntity<>("A pessoa com o ID " + id + " foi excluido com sucesso!", HttpStatus.OK);
     }
 
-    public ResponseEntity<String> editar(@PathVariable int id, @RequestBody Pessoa pessoaAtualizada) {
+    public ResponseEntity<String> editar(int id, Pessoa pessoaAtualizada) {
         if (repository.existsById(id)) {
             pessoaAtualizada.setId(id);
             repository.save(pessoaAtualizada);
