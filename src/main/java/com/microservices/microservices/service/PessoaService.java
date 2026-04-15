@@ -7,6 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.microservices.microservices.controller.PessoaController;
+import com.microservices.microservices.converter.PessoaConverter;
+import com.microservices.microservices.dto.PessoaDto;
 import com.microservices.microservices.entities.Pessoa;
 import com.microservices.microservices.repository.PessoaRepository;
 
@@ -16,14 +19,17 @@ public class PessoaService {
     @Autowired
     PessoaRepository repository;
 
+    @Autowired
+    PessoaConverter converter;
+
     public ResponseEntity<String> cadastrar(Pessoa pessoa) {
         repository.save(pessoa);
         return new ResponseEntity<>("Cadastrado com sucesso", HttpStatus.OK);
     }
 
-    public ResponseEntity<List<Pessoa>> listarTodos() {
+    public ResponseEntity<List<PessoaDto>> listarTodos() {
         List<Pessoa> pessoas = repository.findAll();
-        return new ResponseEntity<>(pessoas, HttpStatus.OK);
+        return new ResponseEntity<>(converter.toListDto(pessoas), HttpStatus.OK);
     }
 
     public ResponseEntity<String> excluir(int id) {

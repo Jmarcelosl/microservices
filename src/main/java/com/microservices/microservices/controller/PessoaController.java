@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.microservices.microservices.dto.PessoaDto;
 import com.microservices.microservices.entities.Pessoa;
 import com.microservices.microservices.service.PessoaService;
 
@@ -31,7 +32,7 @@ public class PessoaController {
     }
 
     @GetMapping("/listarTodos")
-    public ResponseEntity<List<Pessoa>> listarTodos() {
+    public ResponseEntity<List<PessoaDto>> listarTodos() {
         return service.listarTodos();
     }
 
