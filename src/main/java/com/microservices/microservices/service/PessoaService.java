@@ -23,7 +23,7 @@ public class PessoaService {
 
     public ResponseEntity<String> cadastrar(Pessoa pessoa) {
         repository.save(pessoa);
-        return new ResponseEntity<>("Cadastrado com sucesso", HttpStatus.OK);
+        return new ResponseEntity<>("Registrado com sucesso!", HttpStatus.OK);
     }
 
     public ResponseEntity<List<PessoaDto>> listarTodos() {
@@ -33,16 +33,16 @@ public class PessoaService {
 
     public ResponseEntity<String> excluir(int id) {
         repository.deleteById(id);
-        return new ResponseEntity<>("A pessoa com o ID " + id + " foi excluido com sucesso!", HttpStatus.OK);
+        return new ResponseEntity<>("O registro com o ID " + id + " foi excluido com sucesso!", HttpStatus.OK);
     }
 
     public ResponseEntity<String> editar(int id, Pessoa pessoaAtualizada) {
         if (repository.existsById(id)) {
             pessoaAtualizada.setId(id);
             repository.save(pessoaAtualizada);
-            return new ResponseEntity<>("A pessoa com o ID " + id + " foi alterada com sucesso!", HttpStatus.OK);
+            return new ResponseEntity<>("O registro com o ID " + id + " foi alterado com sucesso!", HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("Pessoa não encontrada.", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Registro não encontrada.", HttpStatus.NOT_FOUND);
         }
     }
 }
