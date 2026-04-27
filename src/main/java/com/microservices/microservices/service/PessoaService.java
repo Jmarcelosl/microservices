@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.microservices.microservices.controller.PessoaController;
 import com.microservices.microservices.converter.PessoaConverter;
 import com.microservices.microservices.dto.PessoaDto;
 import com.microservices.microservices.entities.Pessoa;

@@ -1,0 +1,8 @@
+package com.microservices.microservices.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class AvaliacaoClinicaService {
+
+}
