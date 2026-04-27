@@ -10,34 +10,34 @@ public class AvaliacaoClinica {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private int idPaciente;
+    private Integer id;
+    private Integer idPaciente;
     private String observacoes;
     private String dataAvaliacao;
 
     public AvaliacaoClinica() {
     }
 
-    public AvaliacaoClinica(int id, int idPaciente, String observacoes, String dataAvaliacao) {
+    public AvaliacaoClinica(Integer id, Integer idPaciente, String observacoes, String dataAvaliacao) {
         this.id = id;
         this.idPaciente = idPaciente;
         this.observacoes = observacoes;
         this.dataAvaliacao = dataAvaliacao;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getIdPaciente() {
+    public Integer getIdPaciente() {
         return idPaciente;
     }
 
-    public void setIdPaciente(int idPaciente) {
+    public void setIdPaciente(Integer idPaciente) {
         this.idPaciente = idPaciente;
     }
 

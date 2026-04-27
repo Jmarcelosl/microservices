@@ -10,17 +10,17 @@ public class Paciente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String nome;
     private String cpf;
-    private int idade;
+    private Integer idade;
     private String diagnostico;
-    private int nivelDePrioridade;
+    private Integer nivelDePrioridade;
 
     public Paciente() {
     }
 
-    public Paciente(int id, String nome, String cpf, int idade, String diagnostico, int nivelDePrioridade) {
+    public Paciente(Integer id, String nome, String cpf, Integer idade, String diagnostico, Integer nivelDePrioridade) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
@@ -29,11 +29,11 @@ public class Paciente {
         this.nivelDePrioridade = nivelDePrioridade;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -53,11 +53,11 @@ public class Paciente {
         this.cpf = cpf;
     }
 
-    public int getIdade() {
+    public Integer getIdade() {
         return idade;
     }
 
-    public void setIdade(int idade) {
+    public void setIdade(Integer idade) {
         this.idade = idade;
     }
 
@@ -69,11 +69,11 @@ public class Paciente {
         this.diagnostico = diagnostico;
     }
 
-    public int getNivelDePrioridade() {
+    public Integer getNivelDePrioridade() {
         return nivelDePrioridade;
     }
 
-    public void setNivelDePrioridade(int nivelDePrioridade) {
+    public void setNivelDePrioridade(Integer nivelDePrioridade) {
         this.nivelDePrioridade = nivelDePrioridade;
     }
 
